@@ -1,0 +1,11 @@
+# VIP (Veze i poznanstva): https://w3id.org/vip/
+Options +FollowSymLinks
+RewriteEngine on
+
+# Vocabulary: the ontology file in the repository
+RewriteRule ^vocab$ https://raw.githubusercontent.com/veze-i-poznanstva/vip/main/schema.ttl [R=302,L]
+
+# Instance data for Serbia: the folder with one Turtle file per entity.
+# Entity files are named after the URI local name, lowercase with hyphens, so until a
+# resolver exists the identifier leads to the folder rather than to the single file.
+RewriteRule ^rs/?.*$ https://github.com/veze-i-poznanstva/vip/tree/main/data/entities [R=302,L]
